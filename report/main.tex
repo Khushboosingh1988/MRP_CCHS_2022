@@ -1,0 +1,566 @@
+\documentclass[12pt]{article}
+
+% Packages
+
+
+% Packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{float}
+
+% Page setup
+\geometry{margin=1in}
+\onehalfspacing
+
+% Title details
+\title{
+    \vspace{-2cm}
+    \textbf{Factors Associated with Life Satisfaction Among Women in Canada}\\
+    \vspace{0.4cm}
+    \large An Analysis of Socioeconomic, Employment, and Health-Related Determinants\\
+    \large Using Canadian Community Health Survey (CCHS 2022) Data
+}
+
+\author{
+    Khushboo Singh\\
+    \vspace{0.3cm}
+    MSc Data Science and Analytics\\
+    Toronto Metropolitan University\\
+    \vspace{0.3cm}
+    Supervisor: Dr. Ozgur Turetken
+}
+
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+Life satisfaction is an important indicator of subjective well-being and reflects how individuals evaluate their overall quality of life. Understanding the factors associated with life satisfaction is particularly important for women, who may experience socioeconomic, employment-related, and health-related challenges that influence their well-being. This study examines factors associated with life satisfaction among women in Canada using data from the 2022 Canadian Community Health Survey (CCHS).
+
+The study focuses on demographic, socioeconomic, employment-related, and health-related determinants of life satisfaction. After selecting female respondents and applying data cleaning procedures, an exploratory analysis dataset consisting of 52,884 women was created. Descriptive statistics, visual analysis, cross-tabulations, and statistical tests were used to examine the distribution of life satisfaction and investigate relationships between life satisfaction and selected explanatory variables, including age, education, household income, food security, employment status, functional difficulty, chronic health conditions, and province of residence.
+
+The exploratory findings indicate that socioeconomic and health-related factors are associated with life satisfaction, with food security and functional difficulty showing the strongest associations among the variables examined. Women experiencing food insecurity reported substantially higher levels of low life satisfaction than food-secure women, and women with functional difficulties also reported higher levels of low life satisfaction than women without functional difficulties. Household income and employment status were also meaningfully associated with life satisfaction, while education and province showed weaker associations.
+
+Building on these findings, the study proposes the use of interpretable predictive modeling approaches, including Logistic Regression and Decision Tree Classification, to identify factors associated with lower life satisfaction among women. The results of this research are expected to contribute to a better understanding of women's well-being in Canada and provide insights into the socioeconomic, employment-related, and health-related conditions that may influence subjective well-being in the post-pandemic context.
+
+\end{abstract}
+
+
+\section{Introduction}
+
+Life satisfaction is an important indicator of subjective well-being and overall quality of life. It reflects how individuals evaluate their life as a whole, rather than only measuring the presence or absence of illness \citep{diener1984, kahneman2010}. For this reason, life satisfaction is commonly used in public health, social science, and population health research to understand broader well-being.
+
+This study focuses on the relationship between objective living conditions and subjective well-being. Subjective well-being refers to how individuals evaluate and experience their own lives, while objective well-being refers to measurable conditions such as income, employment, food security, education, and health status. Although life satisfaction is a subjective measure, it can be influenced by these objective conditions because they affect access to resources, daily activities, independence, and overall quality of life \citep{diener1984, kahneman2010}.
+
+Women's well-being may be influenced by several demographic, socioeconomic, employment-related, and health-related factors. Previous research has shown that women's health and well-being are shaped by social and economic conditions, work and family responsibilities, caregiving roles, income, social support, and health status \citep{denton2004, matud2014, bilodeau2025}. These factors may affect how women experience their daily lives and how they evaluate their overall life satisfaction.
+
+Socioeconomic conditions are also important for understanding life satisfaction. Income, education, food security, and employment status have been linked to differences in subjective well-being across populations \citep{kahneman2010, clark1994, tarasuk2023}. Individuals with greater financial security and access to resources are generally more likely to report higher life satisfaction, while those experiencing financial hardship, unemployment, or material deprivation may report lower well-being.
+
+Health-related factors are another important part of life satisfaction. Functional limitations, chronic health conditions, and difficulties with everyday activities may affect independence, employment participation, social participation, and quality of life. Prior research has identified health status as an important factor associated with subjective well-being and life satisfaction \citep{diener1984, denton2004}.
+
+The post-pandemic context also makes this topic relevant. The COVID-19 pandemic affected employment, caregiving responsibilities, financial security, and social conditions for many Canadians, and these effects may continue to influence well-being \citep{park2024, bilodeau2025}. Studying life satisfaction using recent Canadian survey data can therefore help identify factors associated with women's well-being after the pandemic period.
+
+Although previous studies have examined different determinants of well-being, many focus on specific factors such as income, employment, or health separately. Fewer studies examine demographic, socioeconomic, employment-related, and health-related variables together using recent Canadian population-level data. There is also a need for interpretable analytical approaches that can show which factors are most strongly associated with lower life satisfaction.
+
+This study uses data from the 2022 Canadian Community Health Survey (CCHS) to examine factors associated with life satisfaction among women in Canada. The study investigates how demographic characteristics, socioeconomic conditions, employment-related factors, and health-related variables are associated with life satisfaction. By combining exploratory analysis with interpretable predictive modeling methods, the study aims to identify important factors related to lower life satisfaction and contribute to a better understanding of women's well-being in Canada.
+
+
+
+\section{Literature Review}
+
+\subsection{Life Satisfaction and Subjective Well-Being}
+
+Life satisfaction is an important component of subjective well-being. It refers to how individuals evaluate their life as a whole, rather than only measuring a specific emotional state or clinical mental health condition. Unlike clinical measures of depression, anxiety, or psychological disorder, life satisfaction captures a broader evaluation of quality of life. For this reason, it is commonly used in population-level studies of well-being \citep{diener1984, diener1999}.
+
+\citet{diener1984} described subjective well-being as a broad concept that includes life satisfaction, positive affect, and negative affect. Later research also emphasized that life satisfaction is a useful measure because it reflects an individual's overall judgment of life circumstances, rather than only short-term emotions \citep{diener1999, diener2013}. This distinction is important because well-being is not only about the absence of illness, but also about how people evaluate their lives and experiences.
+
+Life satisfaction is also useful for connecting subjective well-being with objective living conditions. Although life satisfaction is based on an individual's own evaluation, it can be influenced by measurable factors such as income, employment, health, food security, education, and social conditions. For example, previous research has shown that income is more strongly related to life evaluation than to some measures of emotional well-being \citep{kahneman2010}. This suggests that life satisfaction is an appropriate outcome for studying how broader socioeconomic and health-related conditions are associated with well-being.
+
+This distinction is important for the current study because the 2022 Canadian Community Health Survey does not provide a suitable clinical mental health outcome for the full analytical sample used in this project. However, it does include a life satisfaction variable, which provides a meaningful measure of subjective well-being. Using life satisfaction as the outcome allows this study to examine how demographic, socioeconomic, employment-related, and health-related factors are associated with well-being among women in Canada.
+
+Overall, the literature suggests that life satisfaction is shaped by multiple factors, including income, employment, health, social support, and personal circumstances \citep{diener1984, diener1999, diener2013, kahneman2010}. Therefore, examining life satisfaction among women requires attention to broader determinants such as financial security, food security, employment participation, functional health, and social context.
+
+\subsection{Women and Life Satisfaction}
+
+Women’s life satisfaction may be influenced by several social, economic, health-related, and gender-related factors. Previous research has shown that women’s health and well-being are connected to employment conditions, income, caregiving responsibilities, household roles, social support, and chronic stress exposure \citep{denton2004, matud2014, artazcoz2004, bilodeau2025}. These factors can affect daily life, quality of life, and overall well-being.
+
+\citet{denton2004} examined gender differences in health in Canada and found that health outcomes are influenced by psychosocial, structural, and behavioural determinants. Their study showed that women’s health and well-being are affected by employment conditions, income, caregiving responsibilities, and chronic stress exposure. These findings are relevant to the current study because they support the idea that women’s well-being should be examined within a broader social determinants framework rather than through individual characteristics alone.
+
+Gender roles and social relationships may also influence life satisfaction. \citet{matud2014} examined life satisfaction among adult women and men and found that self-esteem and social support were among the strongest predictors of life satisfaction. Their study also showed that social support played an important role in women’s life satisfaction. This suggests that women’s subjective well-being may be shaped not only by economic and health conditions, but also by social relationships and psychosocial resources.
+
+Research on work-family dynamics further supports the importance of gendered experiences in well-being. \citet{bilodeau2025} found that women often experience greater work-family conflict and emotional strain due to unequal caregiving and domestic responsibilities. Similarly, \citet{artazcoz2004} showed that combining paid work and family demands affects men and women differently, with women often experiencing greater health-related consequences when managing both employment and caregiving responsibilities.
+
+Overall, existing literature suggests that women’s life satisfaction is influenced by multiple overlapping factors, including socioeconomic status, employment conditions, caregiving responsibilities, health, and social support. These findings support the need for a women-focused analysis of life satisfaction using recent Canadian population-level data.
+
+\subsection{Socioeconomic Factors and Life Satisfaction}
+\subsubsection{Income and Life Satisfaction}
+
+Income has been linked to life satisfaction because it affects access to material resources, housing, food, transportation, and other necessities \citep{kahneman2010}. Financial security may also reduce stress and provide individuals with greater control over their life circumstances. For this reason, income is commonly considered an important socioeconomic factor in studies of subjective well-being.
+
+\citet{kahneman2010} distinguished between emotional well-being and life evaluation. Their study found that income was more strongly associated with life evaluation than with day-to-day emotional well-being. They argued that higher income improves how individuals evaluate their lives overall, even though emotional well-being may not continue to improve beyond a certain income level. This distinction is directly relevant to the current study because life satisfaction is closer to life evaluation than to a clinical measure of mental health.
+
+The relationship between income and life satisfaction is important for understanding well-being among women in Canada. Women with lower household income may experience greater financial strain, difficulty meeting household needs, housing insecurity, and reduced access to resources. These pressures may contribute to lower overall life satisfaction. Therefore, household income is included in this study as a key socioeconomic predictor.
+
+\subsubsection{Food Security and Life Satisfaction}
+
+Food security is another important socioeconomic factor related to well-being. Household food insecurity refers to inadequate or insecure access to food because of financial constraints, and it reflects broader material deprivation and economic hardship \citep{tarasuk2023}. For this reason, food insecurity is not only a food-related issue, but also an indicator of socioeconomic vulnerability.
+
+\citet{tarasuk2023} reported that household food insecurity in Canada reached a record high in 2022, with 17.8\% of households in the ten provinces experiencing some level of food insecurity. The report emphasized that food insecurity is strongly linked to low income, limited assets, debt, and other forms of socioeconomic disadvantage. It also identified food insecurity as a major social determinant of health, associated with poorer physical and mental health, greater healthcare use, hospitalization, and premature mortality.
+
+Food insecurity is particularly relevant to women’s well-being because the report found high vulnerability among female lone-parent households and households relying on social assistance or Employment Insurance \citep{tarasuk2023}. These findings suggest that food insecurity may reflect broader financial instability and material hardship that can negatively affect life satisfaction.
+
+Because food security emerged as one of the strongest factors in the exploratory analysis, it is an important variable in the current study. Examining food security allows this research to investigate how material deprivation is associated with subjective well-being among women in Canada.
+
+
+\subsection{Employment and Life Satisfaction}
+
+Employment is an important factor related to life satisfaction because it affects income, social participation, identity, daily routine, and access to resources \citep{clark1994, butterworth2011}. Employment can contribute positively to well-being, but this relationship depends on the nature and quality of work. Unemployment, unstable employment, and poor-quality employment may negatively affect well-being.
+
+\citet{clark1994} examined the relationship between unemployment and well-being using data from the British Household Panel Study. The study found that unemployed individuals had substantially higher levels of psychological distress than employed individuals. This suggests that work may provide benefits beyond income, including social connection, purpose, and structure.
+
+Employment quality is also important. \citet{butterworth2011} argued that employment does not automatically improve mental health or well-being if working conditions are poor. Their study found that low-quality jobs characterized by insecurity, low control, and high stress may negatively affect mental well-being. This suggests that both employment status and employment conditions should be considered when examining well-being.
+
+Women may experience employment-related pressures differently because of caregiving responsibilities, work-family conflict, occupational segregation, and unequal domestic labour. \citet{bilodeau2025} found that work-family conflict contributes to gendered mental health inequalities across Canadian provinces. These findings suggest that employment and family responsibilities can jointly shape women’s well-being.
+
+In the current study, employment-related variables are included to examine how labour force participation and work status are associated with life satisfaction among women. This is important because employment may influence life satisfaction both directly and indirectly through income, social engagement, and economic stability.
+
+\subsection{Health and Life Satisfaction}
+
+Health is closely connected to life satisfaction because physical functioning, chronic conditions, and limitations in daily activities can affect independence, social participation, employment, and quality of life \citep{diener1984, denton2004}. Individuals with poorer health may face barriers that reduce their ability to participate fully in work, family, and community life.
+
+\citet{diener1984} identified health as one of the factors associated with subjective well-being. Health can influence life satisfaction directly through pain, mobility, and physical limitations, and indirectly through its effects on employment, income, social participation, and daily functioning.
+
+Functional difficulty is especially important because it reflects limitations in one or more areas of everyday functioning. In the CCHS 2022 grouped variable \texttt{WDMDGDIF}, functional difficulty is based on the Washington Group Short Set questionnaire on functioning. Respondents are asked about their level of difficulty with six domains: seeing, hearing, walking or climbing steps, remembering or concentrating, self-care, and communicating using their usual language. The grouped variable identifies whether respondents reported no difficulty in any domain or at least ``some difficulty'' in one or more domains. Women experiencing functional difficulties may face reduced independence, lower employment participation, greater need for support, and higher daily stress, all of which may be associated with lower life satisfaction.
+
+Musculoskeletal chronic conditions may also affect well-being because they can contribute to pain, reduced mobility, physical limitations, and difficulty completing everyday activities. Therefore, this study includes both functional difficulty and musculoskeletal chronic conditions as health-related predictors of life satisfaction.
+
+\subsection{Post-Pandemic Context and Women’s Well-Being}
+
+The COVID-19 pandemic intensified many social and economic pressures affecting women’s well-being, including employment disruption, caregiving responsibilities, household income, food security, social relationships, and access to health services \citep{park2024, bilodeau2025}. Although this study does not directly measure pandemic experiences, the use of CCHS 2022 data makes the post-pandemic context relevant.
+
+\citet{park2024} found that women and girls from diverse backgrounds in Canada experienced different mental health impacts before and during the COVID-19 pandemic. The study emphasized that women facing multiple forms of disadvantage, including low income, disability, unemployment, and social marginalization, reported poorer well-being outcomes. These findings support the importance of examining women’s well-being through a social determinants and intersectional lens.
+
+The pandemic also highlighted the importance of financial security and household resources. Rising costs of living, employment disruptions, and caregiving pressures may have affected women’s life satisfaction beyond the immediate pandemic period. Therefore, recent post-pandemic survey data provide an important opportunity to examine how socioeconomic, employment-related, and health-related factors are associated with life satisfaction among women in Canada.
+
+\subsection{Interpretable Modeling in Well-Being Research}
+Data-driven and machine learning methods are increasingly used in health and mental health research to examine patterns in large and complex datasets \citep{shatte2019}.These methods can help identify which variables are most strongly associated with health and well-being outcomes. However, in public health and social science contexts, model interpretability is important because researchers need to understand not only whether a model can predict an outcome, but also which factors contribute to that prediction.
+
+This is where interpretable and explainable machine learning approaches are useful. Explainable approaches can help show how different variables contribute to model predictions, identify important predictors, and reveal patterns that may not be clear from descriptive analysis alone. This is especially important in well-being research because the goal is not only to classify individuals at risk of lower life satisfaction, but also to understand the social, economic, employment-related, and health-related factors associated with that risk.
+
+This study uses interpretable modeling approaches, including Logistic Regression and Decision Tree Classification. Logistic Regression is useful because it provides interpretable estimates of the relationship between predictors and the outcome. Decision Tree Classification is useful because it can identify non-linear patterns and provide rule-based explanations that are easier to understand visually.
+
+The purpose of modeling in this study is therefore not only to predict lower life satisfaction, but also to identify which factors are most strongly associated with lower life satisfaction among women. This approach supports both predictive analysis and practical interpretation, which is important for understanding well-being in a public health and social science context.
+
+
+\subsection{Summary of Literature Review and Research Gaps}
+
+The reviewed literature shows that life satisfaction is a widely used indicator of subjective well-being. It reflects how individuals evaluate their overall quality of life and is influenced by both personal and social conditions \citep{diener1984, diener1999, diener2013}. Previous research also suggests that life satisfaction is connected to objective living conditions, including income, employment, health, food security, and social support \citep{kahneman2010, clark1994, tarasuk2023}.
+
+The literature also shows that women’s well-being may be shaped by multiple socioeconomic, employment-related, health-related, and gender-related factors. Studies on women’s health and well-being highlight the importance of income, caregiving responsibilities, employment conditions, work-family conflict, health status, and social support \citep{denton2004, matud2014, artazcoz2004, bilodeau2025}. These findings support the need to examine life satisfaction among women using a broader social determinants perspective.
+
+Income and food security are especially relevant because they reflect financial stability and access to basic resources. Prior research shows that income is more closely related to life evaluation than to some measures of emotional well-being \citep{kahneman2010}, while food insecurity is strongly linked to material deprivation, socioeconomic disadvantage, and poorer health outcomes \citep{tarasuk2023}. Employment is also important because it may influence well-being through income, social participation, identity, and daily structure, while unemployment or poor-quality work may reduce well-being \citep{clark1994, butterworth2011}. Health-related factors, including functional difficulty and chronic conditions, may further affect life satisfaction by limiting independence, employment participation, and daily functioning.
+
+Although this literature provides important insight, several gaps remain. First, many studies examine life satisfaction in general populations, but fewer focus specifically on women using recent Canadian national survey data. Second, many studies examine single determinants of well-being, such as income, employment, or health, separately. Fewer studies examine how multiple variables, including socioeconomic status, food security, employment, demographic characteristics, and health-related factors, are jointly associated with life satisfaction among women.
+
+Third, food security is often studied as a health or poverty issue, but it is less often included in predictive models of life satisfaction. Given the strong connection between food insecurity, material deprivation, and poor health outcomes, food security may be an important factor in understanding subjective well-being. Fourth, much of the existing literature focuses on either clinical mental health outcomes or broad well-being measures. The current study contributes by focusing specifically on life satisfaction as a subjective well-being outcome, which is useful when clinical mental health variables are not available for the full analytical sample.
+
+Finally, while machine learning and predictive methods are increasingly used in health and mental health research \citep{shatte2019}, there is still a need for interpretable approaches that do more than report predictive accuracy. Explainable and interpretable models can help identify important predictors, show how variables are related to the outcome, and support practical understanding in public health and social science contexts.
+
+The current study addresses these gaps by using the CCHS 2022 dataset to examine factors associated with life satisfaction among women in Canada. It integrates demographic, socioeconomic, employment-related, and health-related variables within a single analytical framework. It also applies interpretable modeling methods, including Logistic Regression and Decision Tree Classification, to identify factors associated with lower life satisfaction.
+
+
+
+\section{Data Description}
+
+\subsection{Dataset Overview}
+
+This study uses data from the 2022 Canadian Community Health Survey (CCHS), a national cross-sectional survey conducted by Statistics Canada. The CCHS collects information on health status, health determinants, and healthcare utilization among Canadians aged 12 years and older living in the ten provinces and three territories. The survey is designed to provide health-related information at both national and provincial levels and is widely used for population health research in Canada.
+
+The 2022 CCHS Public Use Microdata File (PUMF) was selected because it was the most suitable publicly available dataset for this project. Since this study is based on public-use microdata, the analysis required a dataset that was accessible outside a restricted data environment and that included variables relevant to life satisfaction, socioeconomic conditions, employment, food security, education, and health. Based on the Statistics Canada catalogue reviewed for this project, the 2022 CCHS PUMF was the most recent public-use CCHS file available for the planned analysis, while newer CCHS cycles may not have been available in the same public-use format or may have required restricted access. Therefore, the 2022 CCHS PUMF was considered appropriate for this study.
+
+The 2022 cycle is also relevant because it provides recent post-pandemic information on Canadian populations. Although this study does not directly measure pandemic experiences, the dataset captures conditions during a period when employment, income, food security, caregiving responsibilities, and health-related factors may still have been affected by the broader post-pandemic context.
+
+For this study, a subset of variables related to demographic characteristics, socioeconomic status, employment status, health status, and life satisfaction was selected. The explanatory variables were chosen based on three main considerations. First, the literature review identified income, education, food security, employment, health status, functional limitations, and demographic characteristics as factors associated with life satisfaction and subjective well-being. Second, these variables represent objective living conditions that may influence subjective well-being. Third, the variables were available in the CCHS 2022 PUMF with sufficient sample coverage for the women included in the analysis.
+
+\begin{table}[h]
+\centering
+\caption{Summary of the CCHS 2022 Dataset Used in This Study}
+\begin{tabular}{p{0.35\textwidth} p{0.55\textwidth}}
+\hline
+\textbf{Characteristic} & \textbf{Description} \\
+\hline
+Dataset & Canadian Community Health Survey (CCHS) 2022 \\
+Data Source & Statistics Canada Public Use Microdata File (PUMF) \\
+Study Design & Cross-sectional survey \\
+Target Population & Canadians aged 12 years and older \\
+Study Population & Female respondents only \\
+Final EDA Sample Size & 52,884 respondents \\
+Geographic Coverage & Canadian provinces and territories \\
+Outcome Variable & Life Satisfaction (\texttt{LSMDVSWL}) \\
+Key Predictor Domains & Demographic, Socioeconomic, Employment, and Health Factors \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Study Population}
+
+The analysis focuses exclusively on female respondents within the CCHS 2022 dataset. After filtering the dataset to include women with valid responses for life satisfaction and selected demographic, socioeconomic, employment-related, and health-related variables, the final exploratory analysis sample consisted of 52,884 respondents.
+
+Restricting the analysis to women allows for a more focused examination of factors associated with well-being within a population that may experience specific occupational, socioeconomic, caregiving-related, and health-related pressures. This approach is consistent with the objective of the study, which is to understand how demographic, socioeconomic, employment-related, and health-related factors are associated with life satisfaction among women in Canada.
+
+The sample includes women from different age groups, educational backgrounds, income levels, employment situations, and geographic regions across Canada. This diversity allows the study to explore how multiple variables are associated with differences in life satisfaction and overall well-being.
+
+\subsection{Variables of Interest}
+
+The primary outcome variable used in this study is \textit{Life Satisfaction} (\texttt{LSMDVSWL}). Statistics Canada derives this variable from respondents' self-reported satisfaction with life and groups responses into five categories: Very Satisfied, Satisfied, Neither Satisfied nor Dissatisfied, Dissatisfied, and Very Dissatisfied.
+
+Life satisfaction was selected as the outcome variable because it is available for the analytical sample and represents a widely used measure of subjective well-being. While it is not a clinical measure of mental illness, life satisfaction captures individuals' overall evaluation of their quality of life, making it suitable for examining factors associated with well-being among women in Canada.
+
+During exploratory analysis, life satisfaction is examined using its original five-category structure. For the later predictive modeling stage, this variable may also be transformed into a binary outcome representing lower life satisfaction. In that case, respondents classified as Dissatisfied or Very Dissatisfied will be considered as experiencing lower life satisfaction, while other responses will be used as the comparison group depending on the final modeling strategy.
+
+Several independent variables were selected based on their relevance to the research objectives, findings from prior literature, and availability in the CCHS 2022 PUMF. These variables are grouped into four categories:
+
+\begin{itemize}
+
+\item \textbf{Demographic Variables}
+\begin{itemize}
+\item Age Group (\texttt{DHHGAGE})
+\item Household Size (\texttt{DHHDGHSZ})
+\item Province of Residence (\texttt{GEOGPRV})
+\item Immigrant Status (\texttt{SDCDGIMM})
+\item Visible Minority Status (\texttt{SDCDVFLA})
+\end{itemize}
+
+\item \textbf{Socioeconomic Variables}
+\begin{itemize}
+\item Household Income (\texttt{INCDGHH})
+\item Education Level (\texttt{EDDVH3})
+\item Household Food Security (\texttt{FSCDVHF2})
+\end{itemize}
+
+\item \textbf{Employment Variables}
+\begin{itemize}
+\item Labour Force Status / Working Status Last Week (\texttt{LBFDGWSS})
+\item Full-Time or Part-Time Employment (\texttt{LBFDVPFT})
+\item Hours Worked per Week (\texttt{LBFDGHPW})
+\end{itemize}
+
+\item \textbf{Health-Related Variables}
+\begin{itemize}
+\item Functional Difficulty Across Domains (\texttt{WDMDGDIF})
+\item Musculoskeletal Chronic Condition (\texttt{CCCDGSKL})
+\end{itemize}
+
+\end{itemize}
+
+The selected variables were chosen based on findings from the literature review, their relevance to the research questions, and their availability in the CCHS 2022 PUMF. Previous research has identified income, education, employment, food security, physical health, functional limitations, and demographic characteristics as factors associated with life satisfaction and subjective well-being. Including variables from different categories allows the study to examine how socioeconomic, employment-related, demographic, and health-related variables are jointly associated with life satisfaction among women in Canada.
+
+Functional difficulty (\texttt{WDMDGDIF}) requires additional explanation because it is a grouped CCHS variable. This variable is based on the Washington Group Short Set questionnaire on functioning and summarizes difficulties across six domains: seeing, hearing, walking or climbing steps, remembering or concentrating, self-care, and communicating using usual language. The grouped variable identifies whether respondents reported no difficulty in any domain or at least ``some difficulty'' in one or more domains.
+
+\subsection{Dataset Limitations}
+
+Several limitations should be considered when interpreting the results of this study. First, the CCHS is a cross-sectional survey, meaning that information is collected at a single point in time. As a result, the analysis can identify associations between variables, but it cannot establish causal relationships.
+
+Second, many variables in the survey are self-reported and may therefore be subject to recall bias or response bias. Respondents may interpret questions differently or provide socially desirable responses, which may affect the accuracy of some measures.
+
+Third, this study uses the public-use version of the CCHS dataset. Public Use Microdata Files are designed to protect respondent confidentiality, and some variables are grouped or less detailed than they may be in restricted-access data. As a result, the analysis is limited to the variables and categories available in the CCHS 2022 PUMF.
+
+Fourth, some employment-related variables contain missing or non-applicable responses because not all respondents were employed at the time of the survey. For example, variables related to hours worked and full-time or part-time employment are primarily applicable to respondents who were working. Therefore, these variables are interpreted carefully during exploratory analysis and may require separate treatment during the modeling stage.
+
+Fifth, life satisfaction represents a subjective measure of well-being rather than a clinical diagnosis of a mental health condition. Although a depression-related variable was explored, it was available only for a limited subset of respondents and was therefore not suitable as the primary outcome variable for the full analysis. Life satisfaction was selected because it was available for the analytical sample and provides a meaningful measure of subjective well-being and quality of life.
+
+Despite these limitations, the CCHS remains one of the most comprehensive and widely used population health datasets in Canada. It provides a strong foundation for examining factors associated with life satisfaction among women in the post-pandemic Canadian context.
+
+
+\section{Exploratory Data Analysis}
+
+\subsection{Data Cleaning and Preprocessing}
+
+The exploratory data analysis (EDA) phase was conducted to understand the characteristics of the study population and to examine relationships between life satisfaction and selected demographic, socioeconomic, employment-related, and health-related variables. Data cleaning involved removing records containing invalid or non-response categories for the primary outcome variable and key explanatory variables. Specifically, respondents with ``Not Stated'' or missing responses for life satisfaction, household income, education, food security, functional difficulty, chronic condition status, immigrant status, and visible minority status were excluded from the analytical sample.
+
+During the initial stages of data preparation, a highly restrictive filtering strategy was applied to employment-related variables. This produced a dataset that primarily included women who were actively employed and excluded many women who were unemployed, retired, students, homemakers, or otherwise outside the labour force. Exploratory analysis showed that this approach limited variation in employment status. Therefore, a broader EDA dataset was constructed to retain valid observations for the outcome variable while preserving variation in employment status and other explanatory variables. This approach resulted in a final exploratory analysis sample of 52,884 women and provided a more suitable basis for examining patterns in life satisfaction.
+
+\subsection{Characteristics of the Study Population}
+
+The final exploratory analysis sample consisted of 52,884 women from the 2022 Canadian Community Health Survey. The study population included women aged 18 years and older. In the final exploratory analysis sample, 15.8\% of respondents were between 18 and 34 years of age, 19.9\% were between 35 and 49 years, 25.8\% were between 50 and 64 years, and 38.5\% were 65 years and older.
+
+Educational attainment was generally high, with approximately 74.5\% of respondents reporting post-secondary education, 18.5\% reporting secondary school graduation, and 7.0\% reporting less than secondary education. Household income levels were diverse, although 56.0\% of respondents belonged to the highest household income category. The remaining respondents were distributed across lower and middle-income categories.
+
+Most respondents, approximately 85.7\%, reported being food secure. However, about 14.3\% experienced some degree of food insecurity, including marginal, moderate, or severe food insecurity. Employment status also varied across respondents, with 47.3\% reporting that they had worked during the previous week, 14.0\% reporting that they had not worked during the previous week, and 38.5\% belonging to categories where employment-related questions were not applicable.
+
+These descriptive statistics indicate variation in employment, socioeconomic, and health-related characteristics, providing an appropriate basis for examining factors associated with life satisfaction.
+
+\subsection{Distribution of Life Satisfaction}
+
+Life satisfaction was measured using the grouped variable \texttt{LSMDVSWL}, which categorizes respondents into five levels ranging from `Very Dissatisfied'' to `Very Satisfied.'' Figure~\ref{fig:life_satisfaction_distribution} presents the distribution of life satisfaction among women in the analytical sample.
+
+The results indicate that the majority of women reported positive levels of life satisfaction. Approximately 30.1\% of respondents were classified as very satisfied, while 55.8\% reported being satisfied. Smaller proportions reported neutral satisfaction (7.8\%), dissatisfaction (5.2\%), and very low satisfaction (1.1\%). Overall, more than 85\% of respondents reported being either satisfied or very satisfied with their lives, suggesting generally favourable levels of subjective well-being within the study population.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/life_satisfaction_distribution.png}
+\caption{Distribution of Life Satisfaction Among Women}
+\label{fig:life_satisfaction_distribution}
+\end{figure}
+
+\subsection{Employment and Life Satisfaction}
+
+Employment status was examined to assess its relationship with life satisfaction. Figure~\ref{fig:employment_status} presents the percentage of women reporting low life satisfaction across employment categories. Low life satisfaction was defined as reporting either `Dissatisfied'' or `Very Dissatisfied'' on the life satisfaction variable.
+
+Women who reported working during the previous week had lower levels of low life satisfaction compared to women who had not worked. Among women who worked during the previous week, approximately 6.0\% reported low life satisfaction. In contrast, women who did not work during the previous week reported higher levels of low life satisfaction, with approximately 11.5\% reporting low life satisfaction.
+
+Women outside the labour force demonstrated intermediate levels of low life satisfaction. These findings suggest that employment status is associated with life satisfaction. Possible explanations include differences in financial security, social engagement, daily routine, and access to resources. However, because the data are cross-sectional, these results should be interpreted as associations rather than causal effects.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/low_life_satisfaction_by_employment_status.png}
+\caption{Low Life Satisfaction by Employment Status}
+\label{fig:employment_status}
+\end{figure}
+
+\subsection{Socioeconomic Factors and Life Satisfaction}
+
+\subsubsection{Household Income}
+
+Household income showed a clear relationship with life satisfaction. Figure~\ref{fig:income_analysis} illustrates the prevalence of low life satisfaction across income groups.
+
+Women in the lowest income category reported substantially higher levels of low life satisfaction than women in the highest income category. Approximately 16.8\% of women in the lowest income group reported low life satisfaction, compared with 4.9\% among women in the highest income group. Women in the lowest income category were therefore more than three times as likely to report low life satisfaction as those in the highest income category.
+
+These findings suggest that economic resources are associated with subjective well-being and are consistent with previous literature linking financial security to life satisfaction and quality of life.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/low_life_satisfaction_by_income.png}
+\caption{Low Life Satisfaction by Household Income}
+\label{fig:income_analysis}
+\end{figure}
+
+\subsubsection{Food Security}
+
+Food security showed one of the strongest descriptive relationships with life satisfaction among the variables examined. Figure~\ref{fig:food_security_analysis} presents the prevalence of low life satisfaction across levels of food security.
+
+A clear increase in low life satisfaction was observed as food insecurity worsened. Among food-secure women, approximately 4.7\% reported low life satisfaction. This increased to 8.9\% among marginally food insecure respondents, 14.0\% among moderately food insecure respondents, and 28.3\% among severely food insecure respondents.
+
+The results suggest that women experiencing severe food insecurity are approximately six times more likely to report low life satisfaction than food-secure women. These findings highlight the importance of material hardship and economic vulnerability in relation to subjective well-being.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/low_life_satisfaction_by_food_security.png}
+\caption{Low Life Satisfaction by Food Security Status}
+\label{fig:food_security_analysis}
+\end{figure}
+
+\subsubsection{Education}
+
+Educational attainment showed a comparatively weaker relationship with life satisfaction. Figure~\ref{fig:education_analysis} presents the prevalence of low life satisfaction across education levels.
+
+Women with post-secondary education reported the lowest prevalence of low life satisfaction at approximately 6.1\%. The prevalence was slightly higher among women with less than secondary education (6.7\%) and women with secondary school graduation (7.3\%). Compared with income and food security, the differences across education groups were relatively small.
+
+These findings suggest that education is associated with life satisfaction, but the relationship appears weaker than the relationships observed for income and food security in this sample.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/low_life_satisfaction_by_education.png}
+\caption{Low Life Satisfaction by Education Level}
+\label{fig:education_analysis}
+\end{figure}
+
+\subsection{Health Factors and Life Satisfaction}
+
+\subsubsection{Functional Difficulty}
+
+Functional difficulty emerged as one of the strongest health-related correlates of life satisfaction. Figure~\ref{fig:functional_difficulty_analysis} presents the prevalence of low life satisfaction among women with and without functional difficulties.
+
+Women reporting functional difficulties experienced substantially higher levels of low life satisfaction than women without difficulties. Approximately 9.9\% of women with functional difficulties reported low life satisfaction, compared with 3.0\% among women without difficulties.
+
+Women reporting functional difficulties were therefore more than three times as likely to experience low life satisfaction. This finding highlights the importance of physical and functional well-being in shaping overall quality of life.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/low_life_satisfaction_by_functional_difficulty.png}
+\caption{Low Life Satisfaction by Functional Difficulty}
+\label{fig:functional_difficulty_analysis}
+\end{figure}
+
+\subsubsection{Musculoskeletal Chronic Conditions}
+
+Musculoskeletal chronic conditions, including arthritis, osteoporosis, and fibromyalgia, were also associated with life satisfaction. Women reporting these conditions were more likely to report low life satisfaction than women without such conditions.
+
+Approximately 8.2\% of women with musculoskeletal chronic conditions reported low life satisfaction, compared with 5.5\% among women without these conditions. Although this relationship was weaker than that observed for functional difficulty, it suggests that chronic health conditions may be associated with lower subjective well-being.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/low_life_satisfaction_by_musculoskeletal_condition.png}
+\caption{Low Life Satisfaction by Musculoskeletal Chronic Conditions}
+\label{fig:chronic_condition_analysis}
+\end{figure}
+
+\subsection{Geographic Variation in Life Satisfaction}
+
+Geographic variation in life satisfaction was examined using province-level indicators. Figure~\ref{fig:province_analysis} presents the prevalence of low life satisfaction across provinces.
+
+The prevalence of low life satisfaction varied modestly across provinces, ranging from approximately 4.3\% in Quebec to 7.6\% in Nova Scotia. While regional variation may reflect differences in local economic conditions, access to services, and population composition, the differences across provinces were smaller than those observed for food security and functional difficulty. Therefore, province was retained as a contextual variable rather than treated as a primary explanatory factor.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/low_life_satisfaction_by_province.png}
+\caption{Low Life Satisfaction by Province}
+\label{fig:province_analysis}
+\end{figure}
+
+\subsection{Statistical Significance Testing}
+
+To assess whether the observed differences in low life satisfaction across key categorical variables were statistically significant, Chi-square tests of independence were conducted. Since the analytical sample is large, Cramer's V was also used to assess the strength of association. This is important because large samples can produce statistically significant p-values even when the practical strength of association is small.
+
+The results indicated statistically significant associations between low life satisfaction and all key variables examined. However, the strength of association varied across variables. Food security showed the strongest association with low life satisfaction, followed by functional difficulty. Household income and employment status showed weaker but noticeable associations. Education and province were statistically significant but had relatively weak associations.
+
+\begin{table}[H]
+\centering
+\caption{Chi-square Tests and Cramer's V for Low Life Satisfaction}
+\begin{tabular}{lccc}
+\hline
+Variable & Chi-square & p-value & Cramer's V \\
+\hline
+Household income & 486.249 & $<0.001$ & 0.096 \\
+Food security & 2161.062 & $<0.001$ & 0.202 \\
+Education & 22.370 & $<0.001$ & 0.021 \\
+Employment status & 413.254 & $<0.001$ & 0.088 \\
+Functional difficulty & 1056.595 & $<0.001$ & 0.141 \\
+Musculoskeletal condition & 133.877 & $<0.001$ & 0.050 \\
+Province & 117.589 & $<0.001$ & 0.047 \\
+\hline
+\end{tabular}
+\label{tab:chi_square_cramers_v}
+\end{table}
+
+\subsection{Summary of Key Findings}
+
+Several important findings emerged from the exploratory analysis. First, food security showed the strongest association with low life satisfaction among the variables examined. Women experiencing severe food insecurity reported much higher levels of low life satisfaction than food-secure women. This finding was also supported by the statistical testing, where food security had the largest Cramer's V value among the variables examined.
+
+Second, household income showed a clear socioeconomic pattern. Women in lower-income categories reported higher levels of low life satisfaction than women in the highest income category. This suggests that financial resources and material conditions are important factors associated with subjective well-being.
+
+Third, functional difficulty was strongly associated with lower life satisfaction. Women reporting functional difficulties had higher levels of low life satisfaction than women reporting no functional difficulty. This suggests that everyday functioning and physical limitations are important health-related factors in understanding overall quality of life.
+
+Employment status also showed a meaningful relationship with life satisfaction, with women who had not worked during the previous week reporting higher levels of low life satisfaction than women who had worked. Musculoskeletal chronic conditions were also associated with lower life satisfaction, although the association was weaker than that observed for functional difficulty. Education and province showed statistically significant but relatively weak associations with low life satisfaction.
+
+Overall, the exploratory analysis suggests that life satisfaction among women in Canada is associated with a combination of socioeconomic, employment-related, and health-related variables. Among the variables examined, food security, functional difficulty, household income, and employment status appeared to be the most important correlates of low life satisfaction. These findings provide a useful foundation for the predictive modeling approaches planned in the next stage of the project.
+
+
+\section{Project Approach}
+
+\subsection{Research Methodology}
+
+This study uses a quantitative secondary-data research design based on the 2022 Canadian Community Health Survey (CCHS). Since the CCHS is a cross-sectional survey, the analysis is designed to identify associations and predictive patterns rather than establish causal relationships. The study focuses on female respondents and examines how demographic, socioeconomic, employment-related, and health-related variables are associated with life satisfaction and subjective well-being.
+
+The study is based on the idea that subjective well-being can be influenced by objective living conditions. Life satisfaction is a subjective measure because it reflects how individuals evaluate their own lives. However, factors such as income, food security, employment status, education, and health-related functioning represent objective conditions that may shape these evaluations. Therefore, this study examines how these measurable conditions are associated with life satisfaction among women in Canada.
+
+The research methodology follows a structured data analysis pipeline. First, relevant variables were selected from the CCHS 2022 dataset based on the literature review, the research objectives, and the availability of suitable variables in the public-use dataset. Second, data cleaning and preprocessing were conducted to remove invalid, missing, and non-response categories for key variables. Third, exploratory data analysis was performed to examine the distribution of life satisfaction and to identify descriptive patterns between life satisfaction and selected explanatory variables. Fourth, statistical tests were used to assess whether observed differences across key categorical variables were statistically significant. Finally, supervised learning models will be developed to examine whether selected variables can help identify women at greater risk of lower life satisfaction.
+
+Two interpretable modeling approaches will be used: Logistic Regression and Decision Tree Classification. Logistic Regression is included because it provides interpretable estimates of the association between predictors and the outcome. Decision Tree Classification is included because it can identify non-linear patterns and provide rule-based explanations that are easier to interpret visually. Together, these methods support both prediction and explanation, which is important in public health and social science research.
+
+The purpose of modeling in this study is not only to predict lower life satisfaction, but also to understand which socioeconomic, employment-related, demographic, and health-related factors appear most relevant. Therefore, the methodology emphasizes interpretability, transparency, and practical understanding rather than prediction accuracy alone.
+
+\subsection{Data Preparation and Feature Selection}
+
+The initial dataset was obtained from the 2022 Canadian Community Health Survey Public Use Microdata File. Female respondents were selected to align with the objective of examining life satisfaction among women in Canada. Variables were selected based on three main criteria: their relevance in the literature review, their connection to the study’s research questions, and their availability and suitability within the CCHS 2022 dataset.
+
+The selected variables were grouped into four categories:
+
+\begin{itemize}
+\item \textbf{Demographic variables:} age group, household size, province of residence, immigrant status, and visible minority status.
+\item \textbf{Socioeconomic variables:} household income, educational attainment, and household food security.
+\item \textbf{Employment-related variables:} labour force status, hours worked, and full-time or part-time employment.
+\item \textbf{Health-related variables:} functional difficulty and musculoskeletal chronic conditions.
+\end{itemize}
+
+Data cleaning procedures involved removing invalid, missing, non-response, and not-stated values for the outcome variable and key explanatory variables. During exploratory analysis, it was found that some employment-related variables required special consideration because they were only applicable to respondents who were employed at the time of the survey. For example, hours worked and full-time or part-time employment do not apply to all respondents. Therefore, these variables will be handled carefully during modeling so that the analysis does not unintentionally exclude women who are unemployed, retired, students, homemakers, or otherwise outside the labour force.
+
+A broader exploratory analysis dataset was created to preserve variation in employment status and other explanatory variables. The final exploratory analysis dataset consisted of 52,884 women with valid responses for life satisfaction and selected explanatory variables. For the predictive modeling stage, additional preprocessing may be required, including recoding categorical variables, creating a binary lower-life-satisfaction outcome, and addressing class imbalance in the outcome variable.
+
+\subsection{Exploratory Data Analysis}
+
+Exploratory Data Analysis (EDA) was conducted before model development to understand the structure of the dataset and identify potential relationships between explanatory variables and life satisfaction.
+
+The EDA process included:
+
+\begin{itemize}
+\item Descriptive analysis of demographic, socioeconomic, employment-related, and health-related characteristics.
+\item Examination of the distribution of life satisfaction.
+\item Cross-tabulation analysis between life satisfaction and selected explanatory variables.
+\item Visualization of relationships using charts and comparative plots.
+\item Chi-square tests of independence and Cramer's V to assess statistical significance and strength of association.
+\item Identification of variables showing meaningful associations with life satisfaction.
+\end{itemize}
+
+The exploratory analysis showed that food security, functional difficulty, household income, employment status, and musculoskeletal chronic conditions were associated with life satisfaction. Statistical testing showed that all key variables examined were significantly associated with low life satisfaction, although the strength of association varied. Food security had the strongest association based on Cramer's V, followed by functional difficulty. Education and province showed statistically significant but relatively weak associations. These findings support the inclusion of these variables in the later predictive modeling stage.
+
+\subsection{Predictive Modeling Approach}
+
+Following exploratory analysis, supervised learning techniques will be applied to examine whether selected variables can help identify women at greater risk of lower life satisfaction.
+
+The outcome variable will be derived from the grouped life satisfaction measure (\texttt{LSMDVSWL}). For classification purposes, respondents reporting Dissatisfied or Very Dissatisfied will be classified as experiencing lower life satisfaction. Other categories will be handled according to the final modeling strategy. Neutral responses will be examined carefully during model development because they may not clearly belong to either the high or low life satisfaction group.
+
+Two complementary predictive modeling approaches will be used: Logistic Regression and Decision Tree Classification.
+
+\subsubsection{Logistic Regression}
+
+Logistic Regression is a widely used statistical learning method for binary classification problems and is commonly applied in public health and social science research. The method estimates the probability of an outcome occurring based on a set of explanatory variables.
+
+Logistic Regression was selected for this study because it provides interpretable model coefficients and allows the direction and relative strength of associations between predictors and the outcome to be examined. This is important because the study aims not only to predict lower life satisfaction, but also to understand which factors are most strongly associated with it.
+
+\subsubsection{Decision Tree Classification}
+
+Decision Tree Classification is a non-parametric machine learning technique that recursively partitions the data into subgroups based on predictor variables. Unlike Logistic Regression, Decision Trees can capture non-linear relationships and interaction-like patterns among predictors.
+
+Decision Trees were selected because they provide intuitive and interpretable decision rules. This makes them useful for identifying higher-risk profiles of women based on combinations of socioeconomic, employment-related, demographic, and health-related factors. The Decision Tree model will complement the Logistic Regression model by providing a more visual and rule-based understanding of the data.
+
+\subsection{Model Evaluation}
+
+Model performance will be evaluated using a train-test validation framework. The analytical dataset will be divided into training and testing subsets to assess how well the models generalize to unseen data.
+
+Several classification metrics will be used to evaluate model performance:
+
+\begin{itemize}
+\item Accuracy
+\item Precision
+\item Recall
+\item F1-score
+\item Weighted F1-score
+\item Receiver Operating Characteristic Area Under the Curve (ROC-AUC)
+\end{itemize}
+
+Because lower life satisfaction represents a smaller group within the dataset, model evaluation will not rely on accuracy alone. Accuracy may be misleading when the outcome classes are imbalanced because a model can achieve high accuracy by mainly predicting the majority class. Therefore, precision, recall, F1-score, weighted F1-score, and ROC-AUC will also be considered. Weighted F1-score is included because it accounts for class imbalance by weighting each class according to its support in the data.
+
+\subsection{Project Workflow}
+
+The overall workflow of the study consists of data acquisition, variable selection, data cleaning, exploratory analysis, statistical testing, feature engineering, predictive modeling, model evaluation, and interpretation. The workflow is illustrated in Figure~\ref{fig:project_workflow}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/project_workflow.png}
+\caption{Overall Project Methodology}
+\label{fig:project_workflow}
+\end{figure}
+
+This workflow provides a systematic and reproducible approach for examining factors associated with life satisfaction among women in Canada. The results from the exploratory analysis and predictive modeling stages will be used to identify important factors associated with lower life satisfaction and to support interpretation within a public health and social science context.
+
+
+\section{Project Repository}
+
+The source code, notebooks, figures, tables, and project documentation associated with this study are available through the following GitHub repository:
+
+\url{https://github.com/Khushboosingh1988/MRP_CCHS_2022}
+
+The repository contains the data preparation workflow, exploratory data analysis notebooks, generated figures, statistical output tables, project documentation, and supporting materials used throughout the study. Due to Statistics Canada licensing restrictions, the CCHS 2022 Public Use Microdata File is not included in the repository. Instead, the repository includes documentation describing the data source and project structure.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}
