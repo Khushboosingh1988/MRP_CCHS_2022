@@ -1,33 +1,29 @@
-# Factors Associated with Life Satisfaction Among Women in Canada
+## Factors Associated with Life Satisfaction Among Women in Canada**
+**Overview**
 
-## Overview
+This repository contains the code, documentation, exploratory analysis, figures, tables, and project report for my Major Research Project (MRP) in the MSc Data Science and Analytics program at Toronto Metropolitan University.
 
-This repository contains the code, documentation, exploratory analysis, and project report for my Major Research Project (MRP) in the MSc Data Science and Analytics program at Toronto Metropolitan University.
+The study investigates factors associated with life satisfaction among women in Canada using data from the 2022 Canadian Community Health Survey (CCHS). The project focuses on demographic, socioeconomic, employment-related, and health-related determinants of subjective well-being. It uses exploratory data analysis, statistical testing, and interpretable data analytics methods to identify factors associated with lower life satisfaction.
 
-The study investigates factors associated with life satisfaction among women in Canada using data from the 2022 Canadian Community Health Survey (CCHS). The project focuses on demographic, socioeconomic, employment-related, and health-related determinants of subjective well-being and applies interpretable data analytics methods to identify factors associated with lower life satisfaction.
-
-
-## Research Objective
+**Research Objective**
 
 The primary objective of this study is to examine how demographic characteristics, socioeconomic conditions, employment-related factors, and health-related factors are associated with life satisfaction among women in Canada.
 
 The study aims to:
 
-* Explore patterns of life satisfaction among Canadian women.
-* Identify factors associated with lower life satisfaction.
-* Examine the role of income, food security, employment, and health conditions.
-* Develop interpretable predictive models using Logistic Regression and Decision Tree Classification.
-
+Explore patterns of life satisfaction among women in Canada.
+Identify factors associated with lower life satisfaction.
+Examine the role of income, food security, employment status, education, functional difficulty, and chronic health conditions.
+Apply interpretable predictive modeling methods, including Logistic Regression and Decision Tree Classification.
 
 ## Dataset
 
-**Data Source:** Canadian Community Health Survey (CCHS) 2022
+**Data Source**: Canadian Community Health Survey (CCHS) 2022
+**Provider**: Statistics Canada
+**Study Population**: Female respondents only
+**Final Exploratory Analysis Sample**: 52,884 women
 
-**Provider:** Statistics Canada
-
-**Study Population:** Female respondents only
-
-**Note:** Due to Statistics Canada licensing and data-sharing restrictions, the dataset is not included in this repository.
+Due to Statistics Canada licensing and data-sharing restrictions, the CCHS 2022 Public Use Microdata File is not included in this repository. The data/README.md file provides information about the dataset source and data access limitations.
 
 
 
@@ -44,7 +40,7 @@ MRP_CCHS_2022
 │   └── tables/
 │
 ├── report/
-│   ├── MRP_Report.pdf
+│   ├── MRP_Literature_Review_EDA_June2026.pdf
 │   └── references.bib
 │
 ├── data/
@@ -53,83 +49,83 @@ MRP_CCHS_2022
 └── README.md
 
 
-
-
 ## Current Progress
 
-### Completed
+## Completed
+Literature review
+Data preparation
+Variable selection
+Data cleaning
+Exploratory Data Analysis (EDA)
+Visual analysis of life satisfaction patterns
+Chi-square tests and Cramer's V association analysis
+Project methodology design
+Workflow diagram
+June 2026 literature review and EDA deliverable
 
-* Literature Review
-* Data Preparation
-* Variable Selection
-* Data Cleaning
-* Exploratory Data Analysis (EDA)
-* Project Methodology Design
-* Workflow Diagram
-
-### Planned
-
-* Logistic Regression Modeling
-* Decision Tree Classification
-* Model Evaluation
-* Interpretation of Predictors
-* Final Report and Conclusions
-
-
+## Planned
+Logistic Regression modeling
+Decision Tree Classification
+Model evaluation
+Interpretation of predictors
+Final report and conclusions
 
 ## Key Variables
+Outcome Variable
+Life Satisfaction (LSMDVSWL)
 
-### Outcome Variable
+## Predictor Categories
+Demographic factors
+Socioeconomic factors
+Employment-related factors
+Health-related factors
 
-* Life Satisfaction (LSMDVSWL)
+## Key predictors include:
 
-### Predictor Categories
+Age group
+Household income
+Education level
+Household food security
+Labour force status
+Functional difficulty
+Musculoskeletal chronic condition
+Province of residence
+Immigrant status
+Visible minority status
 
-* Demographic Factors
-* Socioeconomic Factors
-* Employment Factors
-* Health-Related Factors
+## Methods
 
-Key predictors include:
+The project currently includes descriptive statistics, exploratory data analysis, visual comparison of low life satisfaction across key groups, and statistical testing using Chi-square tests and Cramer's V. The next stage of the project will apply interpretable predictive modeling methods, including Logistic Regression and Decision Tree Classification.
 
-* Age Group
-* Household Income
-* Education Level
-* Food Security
-* Labour Force Status
-* Functional Difficulty
-* Musculoskeletal Chronic Condition
-* Province of Residence
-
+Model performance will be evaluated using accuracy, precision, recall, F1-score, weighted F1-score, and ROC-AUC, with attention to class imbalance in the lower life satisfaction outcome.
 
 ## Tools and Technologies
+Python
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Scikit-learn
+Jupyter Notebook
+LaTeX
+GitHub
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-learn
-* Jupyter Notebook
-* LaTeX
-
-
+## Deliverable
+The current June 2026 deliverable is available in the report/ folder:
+report/MRP_Literature_Review_EDA_June2026.pdf
 
 ## Author
 
-**Khushboo Singh**
-
+## Khushboo Singh
 MSc Data Science and Analytics
-
 Toronto Metropolitan University
-
 
 ## Supervisor
 
-Dr. Ozgur Turetken, Ph.D.
-
+## Dr. Ozgur Turetken, Ph.D.
 Professor, Information Technology Management
-
+Ted Rogers School of Management
+Toronto Metropolitan University
 Ted Rogers School of Management
 
 Toronto Metropolitan University
