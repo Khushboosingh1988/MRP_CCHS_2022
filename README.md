@@ -1,4 +1,4 @@
-## Factors Associated with Life Satisfaction Among Women in Canada**
+## Factors Associated with Life Satisfaction Among Women in Canada
 **Overview**
 
 This repository contains the code, documentation, exploratory analysis, figures, tables, and project report for my Major Research Project (MRP) in the MSc Data Science and Analytics program at Toronto Metropolitan University.
@@ -11,10 +11,11 @@ The primary objective of this study is to examine how demographic characteristic
 
 The study aims to:
 
-Explore patterns of life satisfaction among women in Canada.
-Identify factors associated with lower life satisfaction.
-Examine the role of income, food security, employment status, education, functional difficulty, and chronic health conditions.
-Apply interpretable predictive modeling methods, including Logistic Regression and Decision Tree Classification.
+•	Explore patterns of life satisfaction among women in Canada.
+•	Identify factors associated with lower life satisfaction.
+•	Examine the role of income, food security, employment status, education, functional difficulty, and chronic health conditions.
+•	Apply interpretable predictive modeling methods, including Logistic Regression and Decision Tree Classification.
+
 
 ## Dataset
 
