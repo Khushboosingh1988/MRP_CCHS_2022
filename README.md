@@ -51,7 +51,7 @@ MRP_CCHS_2022
 
 ## Current Progress
 
-## Completed
+**Completed**
 Literature review
 Data preparation
 Variable selection
@@ -63,7 +63,7 @@ Project methodology design
 Workflow diagram
 June 2026 literature review and EDA deliverable
 
-## Planned
+**Planned**
 Logistic Regression modeling
 Decision Tree Classification
 Model evaluation
@@ -71,16 +71,16 @@ Interpretation of predictors
 Final report and conclusions
 
 ## Key Variables
-Outcome Variable
+**Outcome Variable**
 Life Satisfaction (LSMDVSWL)
 
-## Predictor Categories
+**Predictor Categories**
 Demographic factors
 Socioeconomic factors
 Employment-related factors
 Health-related factors
 
-## Key predictors include:
+**Key predictors include:**
 
 Age group
 Household income
@@ -116,13 +116,13 @@ report/MRP_Literature_Review_EDA_June2026.pdf
 
 ## Author
 
-## Khushboo Singh
+**Khushboo Singh**
 MSc Data Science and Analytics
 Toronto Metropolitan University
 
 ## Supervisor
 
-## Dr. Ozgur Turetken, Ph.D.
+**Dr. Ozgur Turetken, Ph.D.**
 Professor, Information Technology Management
 Ted Rogers School of Management
 Toronto Metropolitan University
