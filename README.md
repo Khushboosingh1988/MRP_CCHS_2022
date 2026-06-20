@@ -110,7 +110,7 @@ Scikit-learn
 Jupyter Notebook
 LaTeX
 GitHub
-
+ 
 ## Deliverable
 The current June 2026 deliverable is available in the report/ folder:
 report/MRP_Literature_Review_EDA_June2026.pdf
