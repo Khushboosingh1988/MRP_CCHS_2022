@@ -1,0 +1,8 @@
+Model,Accuracy,Precision,Recall,F1-score,Weighted F1-score,ROC-AUC,PR-AUC,Balanced Accuracy
+Baseline Model,0.937,0.0,0.0,0.0,0.906,0.5,0.063,0.5
+Logistic Regression,0.686,0.123,0.65,0.207,0.766,0.731,0.197,0.669
+Decision Tree,0.695,0.123,0.627,0.206,0.773,0.717,0.164,0.664
+Tuned Decision Tree,0.688,0.121,0.627,0.203,0.768,0.723,0.185,0.66
+Random Forest,0.677,0.121,0.661,0.205,0.76,0.733,0.201,0.669
+Tuned Random Forest,0.636,0.112,0.692,0.193,0.729,0.731,0.201,0.662
+Gradient Boosting,0.685,0.122,0.643,0.205,0.766,0.733,0.204,0.665

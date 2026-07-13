@@ -1,0 +1,4 @@
+Model,Accuracy,Precision,Recall,F1-score,Weighted F1-score,ROC-AUC
+Baseline Model,0.937,0.0,0.0,0.0,0.906,0.5
+Logistic Regression,0.686,0.123,0.65,0.207,0.766,0.731
+Decision Tree,0.695,0.123,0.627,0.206,0.773,0.717

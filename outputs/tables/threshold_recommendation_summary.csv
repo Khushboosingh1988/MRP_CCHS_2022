@@ -1,0 +1,3 @@
+Recommended Use,Model,Threshold,Precision,Recall,F1-score,Balanced Accuracy,Interpretation
+Main threshold recommendation,Logistic Regression,0.7,0.234,0.315,0.268,0.623,Highest F1-score and easier to interpret
+Recall-oriented alternative,Random Forest,0.6,0.181,0.469,0.261,0.663,"Higher recall and balanced accuracy, but lower precision"

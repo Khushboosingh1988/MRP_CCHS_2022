@@ -1,0 +1,5 @@
+Model,Threshold,Precision,Recall,F1-score,Balanced Accuracy
+Gradient Boosting,0.75,0.276,0.258,0.267,0.606
+Logistic Regression,0.7,0.234,0.315,0.268,0.623
+Random Forest,0.6,0.181,0.469,0.261,0.663
+Tuned Random Forest,0.7,0.294,0.228,0.257,0.595

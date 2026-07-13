@@ -1,0 +1,4 @@
+Model Role,Selected Model,Reason,Accuracy,Precision,Recall,F1-score,ROC-AUC,PR-AUC,Balanced Accuracy
+Main interpretable model,Logistic Regression,Competitive ROC-AUC and PR-AUC with stronger interpretability through coefficients and odds ratios,0.686,0.123,0.65,0.207,0.731,0.197,0.669
+Strongest predictive benchmark,Gradient Boosting,Highest PR-AUC and tied highest ROC-AUC among the tested models,0.685,0.122,0.643,0.205,0.733,0.204,0.665
+Recall-oriented alternative,Tuned Random Forest,Highest recall for the low life satisfaction class,0.636,0.112,0.692,0.193,0.731,0.201,0.662

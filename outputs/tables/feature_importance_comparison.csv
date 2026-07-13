@@ -1,0 +1,12 @@
+Original Variable,Logistic_Mean_Abs_Coefficient,Logistic_Max_Abs_Coefficient,Decision_Tree_Importance,Random_Forest_Importance,Gradient_Boosting_Importance,Logistic_Max_Abs_Coefficient_Rank,Decision_Tree_Importance_Rank,Random_Forest_Importance_Rank,Gradient_Boosting_Importance_Rank,Average_Rank
+WDMDGDIF,1.139,1.139,0.5628,0.4207,0.462,2.0,1.0,1.0,1.0,1.25
+FSCDVHF2,0.9454,1.5271,0.3256,0.2989,0.2747,1.0,2.0,2.0,2.0,1.75
+LBFDGWSS,0.3716,0.403,0.047,0.0674,0.0604,6.0,3.0,3.0,3.0,3.75
+DHHDGHSZ,0.5004,0.5004,0.0432,0.0569,0.0483,4.0,4.0,4.0,5.0,4.25
+GEOGPRV,0.2384,0.5341,0.0,0.0336,0.0555,3.0,7.0,7.0,4.0,5.25
+DHHGAGE,0.2944,0.4493,0.0134,0.0457,0.0434,5.0,5.0,5.0,6.0,5.25
+INCDGHH,0.2475,0.3678,0.008,0.0369,0.0225,7.0,6.0,6.0,7.0,6.5
+CCCDGSKL,0.3186,0.3186,0.0,0.0226,0.0149,8.0,7.0,8.0,8.0,7.75
+EDDVH3,0.2142,0.2324,0.0,0.0074,0.0069,10.0,7.0,9.0,9.0,8.75
+SDCDGIMM,0.0164,0.0164,0.0,0.0051,0.0062,11.0,7.0,10.0,10.0,9.5
+SDCDVFLA,0.235,0.235,0.0,0.0047,0.0051,9.0,7.0,11.0,11.0,9.5

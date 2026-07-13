@@ -1,0 +1,52 @@
+Model,Threshold,Precision,Recall,F1-score,Balanced Accuracy,Selected
+Logistic Regression,0.1,0.0632,1.0,0.1188,0.5005,False
+Logistic Regression,0.15,0.0648,0.9936,0.1216,0.5138,False
+Logistic Regression,0.2,0.0688,0.9736,0.1286,0.5432,False
+Logistic Regression,0.25,0.0758,0.934,0.1402,0.5834,False
+Logistic Regression,0.3,0.0846,0.8959,0.1547,0.6217,False
+Logistic Regression,0.35,0.0945,0.8492,0.1701,0.6506,False
+Logistic Regression,0.4,0.1025,0.796,0.1816,0.6633,False
+Logistic Regression,0.45,0.1121,0.744,0.1949,0.6737,False
+Logistic Regression,0.5,0.1273,0.6652,0.2136,0.679,False
+Logistic Regression,0.55,0.145,0.5886,0.2327,0.6774,False
+Logistic Regression,0.6,0.1736,0.491,0.2565,0.6668,False
+Logistic Regression,0.65,0.2063,0.4008,0.2724,0.6485,True
+Logistic Regression,0.7,0.2327,0.3107,0.2661,0.6209,False
+Logistic Regression,0.75,0.2699,0.2504,0.2598,0.6024,False
+Logistic Regression,0.8,0.3151,0.1953,0.2412,0.5834,False
+Logistic Regression,0.85,0.3577,0.1384,0.1996,0.5608,False
+Logistic Regression,0.9,0.4104,0.0683,0.117,0.5308,False
+Tuned Random Forest,0.1,0.0631,1.0,0.1187,0.5,False
+Tuned Random Forest,0.15,0.0631,1.0,0.1187,0.5,False
+Tuned Random Forest,0.2,0.0631,1.0,0.1187,0.5,False
+Tuned Random Forest,0.25,0.0653,0.9902,0.1224,0.5175,False
+Tuned Random Forest,0.3,0.0789,0.9148,0.1453,0.5978,False
+Tuned Random Forest,0.35,0.09,0.8688,0.163,0.6385,False
+Tuned Random Forest,0.4,0.0968,0.825,0.1733,0.6534,False
+Tuned Random Forest,0.45,0.1024,0.7915,0.1813,0.6621,False
+Tuned Random Forest,0.5,0.1167,0.7093,0.2004,0.6739,False
+Tuned Random Forest,0.55,0.159,0.523,0.2439,0.6684,False
+Tuned Random Forest,0.6,0.1883,0.425,0.261,0.6508,False
+Tuned Random Forest,0.65,0.2354,0.3051,0.2657,0.6192,True
+Tuned Random Forest,0.7,0.2913,0.2195,0.2503,0.5918,False
+Tuned Random Forest,0.75,0.3451,0.1542,0.2132,0.5673,False
+Tuned Random Forest,0.8,0.3973,0.0765,0.1284,0.5344,False
+Tuned Random Forest,0.85,0.5154,0.0253,0.0482,0.5118,False
+Tuned Random Forest,0.9,0.0,0.0,0.0,0.5,False
+Gradient Boosting,0.1,0.0632,0.9996,0.1189,0.5008,False
+Gradient Boosting,0.15,0.0641,0.994,0.1205,0.5086,False
+Gradient Boosting,0.2,0.0682,0.971,0.1275,0.5391,False
+Gradient Boosting,0.25,0.0763,0.9355,0.1411,0.5866,False
+Gradient Boosting,0.3,0.0854,0.8876,0.1557,0.6236,False
+Gradient Boosting,0.35,0.0955,0.839,0.1715,0.652,False
+Gradient Boosting,0.4,0.1035,0.7926,0.1831,0.6652,False
+Gradient Boosting,0.45,0.1116,0.7413,0.194,0.6719,False
+Gradient Boosting,0.5,0.1283,0.6561,0.2147,0.678,False
+Gradient Boosting,0.55,0.1486,0.5784,0.2365,0.6776,False
+Gradient Boosting,0.6,0.176,0.4657,0.2554,0.6594,False
+Gradient Boosting,0.65,0.2027,0.3842,0.2654,0.6412,False
+Gradient Boosting,0.7,0.233,0.3133,0.2672,0.6219,True
+Gradient Boosting,0.75,0.271,0.2425,0.2559,0.5993,False
+Gradient Boosting,0.8,0.3248,0.1825,0.2337,0.5785,False
+Gradient Boosting,0.85,0.3653,0.1176,0.178,0.5519,False
+Gradient Boosting,0.9,0.4181,0.0452,0.0817,0.5205,False
