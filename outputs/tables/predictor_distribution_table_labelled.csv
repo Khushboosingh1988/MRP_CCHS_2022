@@ -1,0 +1,40 @@
+Variable,Category,Category Label,Count,Percentage
+DHHGAGE,2,18 to 34 years,8208,15.62
+DHHGAGE,3,35 to 49 years,10397,19.79
+DHHGAGE,4,50 to 64 years,13573,25.83
+DHHGAGE,5,65 years and older,20365,38.76
+DHHDGHSZ,1,One-person household,20434,38.89
+DHHDGHSZ,2,Two or more person household,32109,61.11
+GEOGPRV,10,Newfoundland and Labrador,1474,2.81
+GEOGPRV,11,Prince Edward Island,278,0.53
+GEOGPRV,12,Nova Scotia,2025,3.85
+GEOGPRV,13,New Brunswick,1901,3.62
+GEOGPRV,24,Quebec,10846,20.64
+GEOGPRV,35,Ontario,17301,32.93
+GEOGPRV,46,Manitoba,2304,4.38
+GEOGPRV,47,Saskatchewan,1750,3.33
+GEOGPRV,48,Alberta,6982,13.29
+GEOGPRV,59,British Columbia,7682,14.62
+SDCDGIMM,1,Non-immigrant,42642,81.16
+SDCDGIMM,2,Immigrant,9901,18.84
+SDCDVFLA,1,Visible minority,6725,12.8
+SDCDVFLA,2,Not a visible minority,45818,87.2
+INCDGHH,1,Lowest income category,1506,2.87
+INCDGHH,2,Lower-middle income category,6825,12.99
+INCDGHH,3,Middle income category,7819,14.88
+INCDGHH,4,Upper-middle income category,6929,13.19
+INCDGHH,5,Highest income category,29464,56.08
+EDDVH3,1,Less than secondary education,3683,7.01
+EDDVH3,2,Secondary school graduation,9706,18.47
+EDDVH3,3,Post-secondary education,39154,74.52
+FSCDVHF2,0,Food secure,45083,85.8
+FSCDVHF2,1,Marginal food insecurity,2140,4.07
+FSCDVHF2,2,Moderate food insecurity,3388,6.45
+FSCDVHF2,3,Severe food insecurity,1932,3.68
+LBFDGWSS,1,Worked last week,24836,47.27
+LBFDGWSS,2,Did not work last week,7342,13.97
+LBFDGWSS,6,Not applicable,20365,38.76
+WDMDGDIF,1,No functional difficulty,26850,51.1
+WDMDGDIF,2,At least some functional difficulty,25693,48.9
+CCCDGSKL,1,Has musculoskeletal chronic condition,16248,30.92
+CCCDGSKL,2,No musculoskeletal chronic condition,36295,69.08
