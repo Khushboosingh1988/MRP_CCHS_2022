@@ -153,6 +153,8 @@ Because low life satisfaction was an imbalanced outcome, the analysis gave speci
 
 Validation-based threshold analysis was also conducted using out-of-fold predictions from the training data.
 
+For the July 28 Results deliverable, additional descriptive summaries were added, including the binary outcome distribution, selected predictor distributions, and an inter-predictor association matrix using Cramer's V.
+
 ## Key Findings
 
 The exploratory and predictive results were generally consistent.
@@ -197,7 +199,7 @@ Therefore, the findings describe patterns within the analytical sample and shoul
 
 The July 2026 updated MRP report is available in the `report/` folder:
 
-`report/MRP_Project_Experiments_July_14.pdf`
+`report/MRP_Project_Results_July_28.pdf`
 
 This report includes the literature review, data description, exploratory analysis, methodology, predictive modeling results, discussion, conclusion, and project limitations.
 
